@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>天气日历 Weather Calendar</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1>天气日历</h1>
+      <form id="search-form" class="search-form">
+        <input id="city-input" type="text" placeholder="输入城市名称 (e.g. Seoul, Shanghai)" autocomplete="off" />
+        <button type="submit">搜索</button>
+        <button type="button" id="locate-btn" title="使用当前位置">📍 定位</button>
+      </form>
+    </header>
+
+    <section id="current-weather" class="current-weather">
+      <div class="cw-loading" id="cw-status">正在获取天气数据…</div>
+      <div class="cw-content" id="cw-content" hidden>
+        <div class="cw-icon" id="cw-icon"></div>
+        <div class="cw-main">
+          <div class="cw-temp" id="cw-temp"></div>
+          <div class="cw-desc" id="cw-desc"></div>
+          <div class="cw-place" id="cw-place"></div>
+        </div>
+        <div class="cw-extra">
+          <div>湿度: <span id="cw-humidity">--</span>%</div>
+          <div>风速: <span id="cw-wind">--</span> km/h</div>
+          <div>更新时间: <span id="cw-updated">--</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="calendar-controls">
+      <button id="prev-month">‹ 上月</button>
+      <h2 id="month-label"></h2>
+      <button id="next-month">下月 ›</button>
+    </section>
+
+    <section class="calendar-wrapper">
+      <div class="calendar-grid" id="weekday-row"></div>
+      <div class="calendar-grid" id="calendar-grid"></div>
+    </section>
+
+    <footer class="app-footer">
+      数据来源: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>
+      （每日预报最多覆盖未来 16 天，超出范围的日期不显示天气图标）
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
